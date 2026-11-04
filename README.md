@@ -1,10 +1,10 @@
 # Portfolio
 
-**Personal site of Denish Ahalpara: MERN full stack projects and hackathon builds, presented as case files.**
+**Personal site of Denish Ahalpara: personal projects, MERN full stack products and hackathon builds, presented as case files.**
 
 ## What is on it
 
-- **Case files:** a page for each project, with how it fits together, what I did and the stack: FinTech Banking App, CrowdX, GeoSense AI and the E-commerce Platform.
+- **Case files:** a page for each project, with how it fits together, what I did and the stack: MailPulse, MailBombarding, CrowdX, FinTech Banking App, GeoSense AI and the E-commerce Platform, plus a "Working on" list of ideas in progress.
 - **About:** education, experience (FirstTecPro, DIPC Software, Unicorn), achievements and skills.
 - **Lab:** a working terminal, a live SHA-256 hasher and a password entropy meter.
 - **Search:** press `/` or `Ctrl`/`⌘` + `K` to jump to any page, project or action.
