@@ -1,4 +1,4 @@
-export type Kind = 'hackathon' | 'fullstack';
+export type Kind = 'personal' | 'hackathon' | 'fullstack';
 
 export interface Project {
   slug: string;
@@ -17,14 +17,80 @@ export interface Project {
 }
 
 export const KIND_LABEL: Record<Kind, string> = {
+  personal: 'Personal projects',
   hackathon: 'Hackathon builds',
   fullstack: 'Full stack products',
 };
 
 export const projects: Project[] = [
   {
-    slug: 'fintech-banking',
+    slug: 'mailpulse',
+    file: 'DA-06',
+    name: 'MailPulse',
+    kind: 'personal',
+    summary:
+      'A full stack email campaign platform: write a campaign, check it, send it once to every recipient, then measure opens, clicks and failures.',
+    role: 'Solo builder',
+    status: 'Personal project, 2026',
+    type: 'Email campaign and analytics platform',
+    flow: ['Contacts', 'Draft and template', 'Safe preview and readiness check', 'Test email', 'Send or schedule', 'Open and click tracking', 'Analytics'],
+    did: [
+      'Built a MERN-style platform (React 19, Express, MongoDB) with JWT auth, argon2 password hashing and Zod validation on every route.',
+      'Made sending safe by design: an atomic draft-to-sending step so a campaign can never go out twice, one delivery record per recipient, and crash-safe resume with a watchdog for stalled sends.',
+      'Added a readiness check, a sandboxed preview and rate-limited test emails that reach only the sender, before anything goes to real recipients.',
+      'Built scheduled sends, {name}-style personalisation, an unsubscribe suppression list, and open and click tracking with HMAC-signed tokens.',
+      'Designed an analytics dashboard with KPI cards, daily charts and failure reasons over 7, 30 or 90 days, backed by a test suite on Node\'s built-in test runner.',
+    ],
+    stack: ['React 19', 'Vite', 'Tailwind CSS', 'Recharts', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Zod', 'JWT', 'Nodemailer'],
+    links: [{ label: 'Source on GitHub', href: 'https://github.com/Denish2410/mailPulse' }],
+    evidence: [
+      { value: '5,000', label: 'recipients per campaign' },
+      { value: '27', label: 'backend test files' },
+    ],
+  },
+  {
+    slug: 'mailbombarding',
+    file: 'DA-05',
+    name: 'MailBombarding',
+    kind: 'personal',
+    summary:
+      'A Python bulk email sender that reads contacts from Excel and sends each one a personalised HTML email over Gmail, with an inline logo and an optional PDF.',
+    role: 'Solo builder',
+    status: 'Personal project, used for client outreach',
+    type: 'Python automation tool',
+    flow: ['Excel contact list', 'Skip incomplete rows', 'Personalise plain and HTML body', 'Attach logo and PDF', 'Send over Gmail SMTP', 'Randomised pause', 'Log result'],
+    did: [
+      'Wrote a script that loads contacts with pandas and OpenPyXL and fills a {First Name} placeholder in both plain-text and HTML versions.',
+      'Built the MIME message with an inline logo and an optional PDF attachment.',
+      'Added randomised delays between sends to stay friendly to spam filters, and skips rows with a missing name or email.',
+      'Logged every send, failure and skip to a file and printed a final sent / failed / skipped summary.',
+    ],
+    stack: ['Python', 'pandas', 'OpenPyXL', 'smtplib', 'email.mime', 'python-dotenv'],
+    links: [{ label: 'Source on GitHub', href: 'https://github.com/Denish2410/MailBombarding' }],
+  },
+  {
+    slug: 'crowdx',
     file: 'DA-04',
+    name: 'CrowdX',
+    kind: 'personal',
+    summary:
+      'An offline-first metro crowd-reporting and incident-response dashboard with an explainable crowd-risk scoring engine.',
+    role: 'Builder',
+    status: 'Built at MetroHackathon',
+    type: 'Offline-first PWA',
+    flow: ['Crowd report', 'Risk scoring engine', 'Priority queue', 'Response checklist', 'Backup and export'],
+    did: [
+      'Built the dashboard around 23 Ahmedabad Metro Phase II stations on two corridors (demonstration data).',
+      'Designed an explainable 0 to 100 risk score from reported severity, time unresolved and repeat reports at the same station, shown beside the staff-reported severity.',
+      'Built a priority queue (Open, Acknowledged, Resolved) with status history, so staff act on the highest-risk reports first.',
+      'Added response checklists, JSON backup, CSV export, safe restore and an installable PWA that works without a network, with data kept in IndexedDB.',
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'PWA (Workbox)', 'IndexedDB', 'Vitest'],
+    links: [{ label: 'Source on GitHub', href: 'https://github.com/Denish2410/crowdX' }],
+  },
+  {
+    slug: 'fintech-banking',
+    file: 'DA-03',
     name: 'FinTech Banking App',
     kind: 'fullstack',
     summary:
@@ -39,25 +105,6 @@ export const projects: Project[] = [
       'Added an analytics dashboard and designed a responsive interface with React.js and Tailwind CSS.',
     ],
     stack: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Tailwind CSS', 'JWT'],
-    links: [],
-  },
-  {
-    slug: 'crowdx',
-    file: 'DA-03',
-    name: 'CrowdX',
-    kind: 'hackathon',
-    summary:
-      'An offline-first metro crowd-reporting and incident-response dashboard with a crowd-risk scoring engine.',
-    role: 'Builder',
-    status: 'MetroHackathon',
-    type: 'Offline-first PWA',
-    flow: ['Crowd report', 'Risk scoring engine', 'Priority queue', 'Staff action', 'Backup and export'],
-    did: [
-      'Built the dashboard with a crowd-risk scoring engine.',
-      'Designed a priority queue for incidents (Open, Acknowledged, Resolved) so staff act on high-risk reports first.',
-      'Added JSON backup, CSV export, safe restore and installable PWA support for use without network access.',
-    ],
-    stack: ['React', 'TypeScript', 'PWA', 'IndexedDB'],
     links: [],
   },
   {
@@ -92,6 +139,12 @@ export const projects: Project[] = [
     stack: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
     links: [],
   },
+];
+
+/** Ideas I am working on now. No case file yet; details to follow. */
+export const upcoming: { name: string; note: string }[] = [
+  { name: 'Emoji injection attack detection', note: 'In progress. Details soon.' },
+  { name: 'Disprove AI model', note: 'In progress. Details soon.' },
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
