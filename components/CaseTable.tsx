@@ -9,6 +9,7 @@ type Filter = 'all' | Kind;
 
 const FILTERS: { id: Filter; label: string }[] = [
   { id: 'all', label: 'All files' },
+  { id: 'personal', label: KIND_LABEL.personal },
   { id: 'fullstack', label: KIND_LABEL.fullstack },
   { id: 'hackathon', label: KIND_LABEL.hackathon },
 ];
